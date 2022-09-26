@@ -1,0 +1,86 @@
+Assembly-fundamental unit of deployement/pre compiled chunk of code run by CLR
+DLL is used in web applications run by web servers(iiiit is also an executable file)
+Assembly Contains: Manifest and IL code
+
+
+Private and shared assemblies
+PRIVATE ASSEMBLY:
+It is used by single application and usually it is stored in that application's install directory
+Eg.   debug>bin
+
+
+ILDasm-Intermediate language Disassembler: Used to extract the contents of dll file
+goto vs cmd run as admin: ildasm.exe with complete path
+
+
+ILAsm-Intermediate language Assembler: Used to reconstruct an assembly from a text file that contains manifest and IL
+
+Weak Named Assembly and Strong Named Assembly:
+Assembly consists of 
+1.A textual name
+2.Assembly Version Number
+3.Assembly Culture information(Language)
+4.Public key token
+
+
+.......................Private Assembly(Do NOT Have public key token)-->Public Assembly(Have Public key Token)
+**Weak Name assembly ko strong name assembly banana padega.
+If the assembly is not signed with the public key pair the assembly is weak named and not guarnteed to be unique and may cause DLL Hell.
+Strong named assembly
+
+
+
+................................................CREATION OF PUBLIC KEY TOKEN................................................................
+
+1.Goto VS commond prompt and run as administrator
+
+2.Write  sn -k <Write loactaion where you want to create public key token and public key token name like> c:\Mykey.snk
+         sn -k stands for strong name key
+
+3.Now press enter
+
+................................................Creating Private Assembly as Shared Assembly................................
+
+1. Check for strong name key in folder
+
+2. Now goto project and open AssemblyInfo.cs file in project and add attribute(TO BE DONE ONCE)
+ 					[assembly:AssemblyKeyFile("<complete path address with name and extension snk>")] 
+
+3.Now build the project
+
+4.Assembly is now signed with private and public key pair
+
+5.To install an assembly using GAC utility
+			Gacutil -i <pathname>   like "c:\assemblypath"
+
+6.To uninstall assembly using GAC utility
+			Gacutil -u <assembly name>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
